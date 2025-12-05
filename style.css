@@ -473,6 +473,12 @@ a {
   border: 1px solid var(--accent);
   box-shadow: var(--shadow-soft);
 }
+.btn-primary {
+  padding: 12px 26px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
 
 .btn-primary:hover {
   background: var(--accent-dark);
@@ -892,33 +898,36 @@ p {
 
 
 /* Fix logo text wrapping on mobile */
-@media (max-width: 480px) {
-  .logo span {
-    font-size: 1rem;   /* shrink text */
-    white-space: nowrap; /* force single line */
+@media (max-width: 600px) {
+  .main-header .logo span {
+    font-size: 0.9rem;
+    white-space: nowrap;      /* keep all on one line */
   }
 }
-/* Fix mobile nav alignment */
+
+/* Mobile nav: keep links in a row, put CTA centered underneath */
 @media (max-width: 768px) {
-  .main-nav {
+  .main-header .main-nav {
     display: flex;
-    flex-direction: column;
-    align-items: center;   /* centers all nav links */
+    flex-wrap: wrap;          /* allow items to go to next line */
+    justify-content: center;
     gap: 0.75rem;
   }
 
-  .main-nav a {
-    display: block;
-    width: 100%;
-    text-align: center;    /* center text */
+  .main-header .main-nav a {
+    text-align: center;
   }
 
-  .btn-primary {
-    width: auto;           /* shrink to content */
-    padding: 10px 20px;
-    margin-top: 5px;
+  .main-header .main-nav .btn-primary {
+    flex-basis: 100%;         /* force its own row */
+    width: auto;
+    margin-top: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;       /* centers it */
+    text-align: center;
   }
 }
+
 
 
 
