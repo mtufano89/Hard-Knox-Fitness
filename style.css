@@ -122,7 +122,49 @@ a {
   font-weight: 600;
   box-shadow: var(--shadow-soft);
 }
+/* NAV FONT + LAYOUT TWEAKS */
+.main-header {
+  font-family: "Oswald", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
 
+.main-header .logo span {
+  font-weight: 600;
+}
+
+/* NAV LINKS */
+.main-nav a {
+  position: relative;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0;          /* gives a little breathing room */
+  transition: color 0.2s ease-out;
+}
+
+/* Underline hover effect */
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 0;
+  height: 2px;
+  background: #facc15;         /* yellow accent, adjust if you want */
+  transition: width 0.25s ease-out;
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus-visible::after {
+  width: 100%;
+}
+
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  color: #facc15;
+}
+ 
 /* Hero */
 .hero {
   position: relative;
@@ -170,11 +212,30 @@ a {
   line-height: 1.6;
   opacity: 0.9;
 }
+.hero-logo {
+  max-width: 260px;
+  margin: 0 auto 1.4rem;
+  display: block;
+
+  /* Soft drop shadow around entire logo */
+  filter: drop-shadow(0px 6px 12px rgba(0,0,0,0.75));
+
+  /* A gentle wide glow behind the logo, NOT circular */
+ 
+  
+
+  padding: 0;          /* Important — prevents clipping */
+  border-radius: 0;     /* No forced circle */
+}
+
 
 .hero-cta {
   font-size: 1rem;
   padding: 0.85rem 2.5rem;
   border-radius: 999px;
+}
+.hero-logo {
+  opacity: 0.92;
 }
 
 /* Simple fade-up animation */
@@ -199,6 +260,191 @@ a {
     max-width: 170px;
   }
 }
+
+/* HERO TEXT STYLE */
+.hero-title {
+  font-family: "Oswald", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 6vw, 3.8rem);
+  margin-bottom: 0.75rem;
+
+  /* wall-smash style */
+  animation: heroWallSmash 0.9s cubic-bezier(0.15, 0.9, 0.2, 1.2) forwards;
+  transform-origin: center;
+  white-space: nowrap;
+}
+
+.hero-tagline {
+  font-size: 1.05rem;
+  margin-bottom: 1.8rem;
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+.hero-subtext {
+  margin-top: 1.8rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* “Breaking through a wall” animation */
+@keyframes heroWallSmash {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(-80px) skewX(-10deg);
+    text-shadow: none;
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1.15) translateY(5px) skewX(4deg);
+    text-shadow:
+      0 0 0 rgba(0,0,0,0.0),
+      12px 10px 0 rgba(0,0,0,0.6);
+  }
+  70% {
+    transform: scale(0.98) translateY(0) skewX(-2deg);
+    text-shadow:
+      0 0 0 rgba(0,0,0,0.0),
+      6px 5px 0 rgba(0,0,0,0.7);
+  }
+  100% {
+    transform: scale(1) translateY(0) skewX(0deg);
+    text-shadow:
+      0 0 0 rgba(0,0,0,0.0),
+      4px 4px 0 rgba(0,0,0,0.75);
+  }
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Primary: bold yellow “danger zone” */
+.hero-cta-primary {
+  background: #facc15;                 /* strong yellow */
+  color: #111827;
+  border-radius: 999px;
+  font-weight: 700;
+  padding: 0.9rem 2.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    background-color 0.15s ease-out;
+}
+
+.hero-cta-primary:hover,
+.hero-cta-primary:focus-visible {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.75);
+  background-color: #fde047;
+}
+
+/* Secondary: aggressive red outline */
+.hero-cta-secondary {
+  border-radius: 999px;
+  padding: 0.9rem 2.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+
+  border: 2px solid #ef4444;
+  color: #fefce8;
+  background: transparent;
+
+  transition:
+    color 0.15s ease-out,
+    background-color 0.15s ease-out,
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out;
+}
+
+.hero-cta-secondary:hover,
+.hero-cta-secondary:focus-visible {
+  background-color: #ef4444;
+  color: #111827;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+}
+
+/* Small tweak on mobile so nothing feels cramped */
+@media (max-width: 600px) {
+  .hero-title {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta-primary,
+  .hero-cta-secondary {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.hero-title {
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 6vw, 3.8rem);
+  margin-bottom: 0.75rem;
+
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.08em;
+
+  color: #f9fafb;
+}
+
+/* Individual letters slam down one by one */
+.hero-letter {
+  display: inline-block;
+  transform: translateY(-130%) scale(1.15);
+  opacity: 0;
+  text-shadow: none;
+
+  animation: letterSlam 0.55s cubic-bezier(0.25, 0.9, 0.2, 1.25) forwards;
+  animation-delay: calc(var(--i) * 0.06s);
+}
+
+/* Slam animation */
+@keyframes letterSlam {
+  0% {
+    transform: translateY(-130%) scale(1.15);
+    opacity: 0;
+    text-shadow: none;
+  }
+  60% {
+    transform: translateY(10%) scale(0.95);
+    opacity: 1;
+    text-shadow: 0 14px 24px rgba(0, 0, 0, 0.9);
+  }
+  80% {
+    transform: translateY(-4%) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    text-shadow: 0 6px 14px rgba(0, 0, 0, 0.8);
+  }
+}
+
+
+
 
 
 
