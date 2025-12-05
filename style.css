@@ -1016,6 +1016,14 @@ p {
   }
 }
 
+/* MOBILE: Completely remove the dark overlay */
+@media (max-width: 600px) {
+  .hero::before {
+    background-color: transparent !important;
+    background: none !important;
+    opacity: 1 !important;
+  }
+}
 
 
 
