@@ -1009,6 +1009,12 @@ p {
   }
 }
 
+/* Mobile: brighten the hero image */
+@media (max-width: 600px) {
+  .hero::before {
+    opacity: 0.45 !important;   /* lighter overlay: image becomes brighter */
+  }
+}
 
 
 
