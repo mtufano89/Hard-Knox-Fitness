@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,13 +16,21 @@
 </head>
 <body>
 
-  <header class="main-header">
+    <header class="main-header">
     <div class="container nav-container">
       <a href="index.html" class="logo">
         <img src="images/hard-knox-logo-1.png" alt="Hard Knox Fitness Logo" />
         <span>Hard Knox Fitness</span>
       </a>
 
+      <!-- Hamburger button (mobile) -->
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Main nav (desktop + mobile dropdown) -->
       <nav class="main-nav">
         <a href="index.html" class="nav-home active">Home</a>
         <a href="about.html" class="nav-about">About</a>
@@ -37,6 +46,7 @@
       </nav>
     </div>
   </header>
+
 
 
   <!-- Hero Section -->
@@ -207,8 +217,31 @@
       </div>
     </div>
   </footer>
+    <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    if (navToggle && mainNav) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = mainNav.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close the menu when a link is clicked
+      mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('open');
+          navToggle.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
+
+
 
 
 
