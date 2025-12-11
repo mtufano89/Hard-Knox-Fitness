@@ -178,7 +178,7 @@ a {
 
   /* background image + dark overlay */
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    linear-gradient(rgba(54, 54, 54, 0.7), rgba(0, 0, 0, 0.7)),
     url("images/hero.background.png");
   background-size: cover;
   background-position: center;
