@@ -375,6 +375,10 @@ a {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
   box-shadow: 0 12px 30px rgba(0,0,0,0.6);
   transition:
@@ -397,6 +401,10 @@ a {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
   border: 2px solid #ef4444;
   color: #fefce8;
@@ -434,9 +442,13 @@ a {
 
   .hero-cta-primary,
   .hero-cta-secondary {
-    width: auto;              /* no more full width */
-    min-width: 230px;         /* make them the same size */
+    width: 100%;              /* full width on mobile */
+    max-width: 280px;         /* but cap the max width */
+    min-width: 280px;         /* same minimum width */
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -1006,7 +1018,8 @@ p {
 }
 /* Mobile: center BOTH hero CTA buttons */
 @media (max-width: 600px) {
-  .hero-ctas {
+  .hero-ctas,
+  .hero-actions {
     flex-direction: column;      /* stack vertically */
     justify-content: center;     /* center the group */
     align-items: center;         /* center horizontally */
@@ -1014,10 +1027,15 @@ p {
   }
 
   .hero-cta,
+  .hero-cta-primary,
   .hero-cta-secondary {
     width: 100%;
-    max-width: 320px;            /* keeps them nicely sized */
+    max-width: 280px;            /* keeps them nicely sized */
+    min-width: 280px;            /* same size for both */
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
